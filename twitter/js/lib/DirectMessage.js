@@ -6,7 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var DirectMessage = function (fromId, toId, body){
+goog.provide('twitter.DirectMessage');
+goog.require('tart');
+twitter.DirectMessage = function (fromId, toId, body){
     this.id = tart.getUId();
     this.fromId = fromId;
     this.toId = toId;

@@ -1,11 +1,21 @@
-// Copyright (c) 2009-2010 Techinox Information Technologies (http://www.techinox.com)
-// Techinox Commercial License
-//
-// @author Armagan Amcalar <armagan@tart.com.tr>
+/**
+ * Created by JetBrains PhpStorm.
+ * User: Emre
+ * Date: 05.07.2011
+ * Time: 09:53
+ * To change this template use File | Settings | File Templates.
+ */
 
-var User = function(username, password, email) {
+goog.provide('twitter.User');
+goog.require('tart');
+twitter.User = function (userName, password, eMail){
     this.id = tart.getUId();
-    this.username = username;
-    this.password = password;
-    this.email = email;
-}
+    this.userName = userName;
+    this.password = password
+    this.eMail = eMail;
+};
+
+//this.following = FollowManager.
+//this.profile = ProfileModel.
+//this.tweets = tweet[{}];
+
