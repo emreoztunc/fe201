@@ -6,9 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
+goog.provide('twitter.TweetModel');
+goog.require('twitter.User');
+goog.require('twitter.Tweet');
 TweetModel = function () {};
 
-TweetModel.prototype.getTweetsByUserId = function (userId) {
+twitter.TweetModel.prototype.getTweetsByUserId = function (userId) {
     var tweets = [{}];
     for (var tweet in localStorage) {
 	tweet = localStorage.getObject(tweet);
@@ -19,12 +22,12 @@ TweetModel.prototype.getTweetsByUserId = function (userId) {
     return tweets;
 };
 
-TweetModel.prototype.postTweet = function (user, body) {
+twitter.TweetModel.prototype.postTweet = function (user, body) {
     var tweet = new Tweet (user, body);
     localStorage.setObject(tweet.id, tweet);
 };
 
-TweetModel.prototype.removeTweet = function (tweetId) {
+twitter.TweetModel.prototype.removeTweet = function (tweetId) {
     for (var tweet in localStorage) {
 	tweet = localStorage.getObject(tweet);
 	if (tweet.tweet.id == tweetId) {

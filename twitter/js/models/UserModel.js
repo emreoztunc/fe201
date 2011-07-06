@@ -6,9 +6,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
+goog.provide('twitter.UserModel');
+goog.require('twitter.User');
+goog.require('twitter.ProfileModel');
+goog.require('twitter.Session');
+goog.require('tart');
 UserModel = function () {};
 
-UserModel.prototype.createUser = function (userName, password, eMail){
+twitter.UserModel.prototype.createUser = function (userName, password, eMail){
     var user = new User (userName, password, eMail);
     localStorage.setObject(user.id, user);
     var phot = "fff";
@@ -20,7 +25,7 @@ UserModel.prototype.createUser = function (userName, password, eMail){
 
 };
 
-UserModel.prototype.removeUser = function (userId) {
+twitter.UserModel.prototype.removeUser = function (userId) {
     for (var user in localStorage) {
 	user = localStorage.getObject(user);
 	if (user.userId == userId) {
@@ -29,20 +34,20 @@ UserModel.prototype.removeUser = function (userId) {
     }
 };
 
-UserModel.prototype.login = function (userName, password) {
+twitter.UserModel.prototype.login = function (userName, password) {
     for (var user in localStorage) {
         if ((user.userName == userName) &&(user.password == password)) {
             var session = new Session(user.id);
-            localStorage.push("Session", session);
+            localStorage.setObject("Session", session);
         }
     }
 };
 
-UserModel.prototype.logout = function () {
+twitter.UserModel.prototype.logout = function () {
     localStorage.removeItem("Session");
 };
 
-UserModel.prototype.getUserById = function (userId) {
+twitter.UserModel.prototype.getUserById = function (userId) {
     for (var user in localStorage) {
 	user = localStorage.getObject(user);
 	if (user.id == userId) {
@@ -51,7 +56,7 @@ UserModel.prototype.getUserById = function (userId) {
     }
 };
 
-UserModel.prototype.getUserByUsername = function (userName) {
+twitter.UserModel.prototype.getUserByUsername = function (userName) {
     for (var user in localStorage) {
 	user = localStorage.getObject(user);
 	if (user.userName == userName) {
