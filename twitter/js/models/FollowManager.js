@@ -10,8 +10,18 @@ goog.provide('twitter.FollowManager');
 goog.provide('twitter.Follow');
 goog.provide('twitter.UserModel');
 goog.require('tart');
+
+/*
+ *
+ *@constructor
+ */
 FollowManager = function () {};
 
+/**
+ * Creates a Follow for a user to follow another one
+ * @param {number}follower A user id, {number}following A user id. This method uses these numbers to create a follow
+ * @return {void}None. Only creation of "follow" is being done. Nothing more.
+ */
 twitter.FollowManager.prototype.createFollow = function (follower, following) {
     var follow = new Follow (follower.id, following.id);
     localStorage.setObject(follow.id, follow);
@@ -33,9 +43,9 @@ twitter.FollowManager.prototype.getFollowingByUserId = function (userId) {
 };
 
 /**
- * 
- * @param userId
- * @return {(boolean|number)}
+ * Returns followers of a user.
+ * @param {number}userId A user id. This method uses this to find a user and than fetches
+ * @return {(boolean | Array.<User>)} followers of the given users.
  */
 twitter.FollowManager.prototype.getFollowersByUserId = function (userId) {
     followers = [{}];

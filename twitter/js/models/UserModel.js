@@ -11,8 +11,18 @@ goog.require('twitter.User');
 goog.require('twitter.ProfileModel');
 goog.require('twitter.Session');
 goog.require('tart');
+
+/*
+ *
+ *@constructor
+ */
 UserModel = function () {};
 
+/**
+ *
+ * @param {string}userName , {string}password , {string}eMail
+ * @return {void}None
+ */
 twitter.UserModel.prototype.createUser = function (userName, password, eMail){
     var user = new User (userName, password, eMail);
     localStorage.setObject(user.id, user);
@@ -25,6 +35,11 @@ twitter.UserModel.prototype.createUser = function (userName, password, eMail){
 
 };
 
+/**
+ *
+ * @param {number}userId
+ * @return {void}None
+ */
 twitter.UserModel.prototype.removeUser = function (userId) {
     for (var user in localStorage) {
 	user = localStorage.getObject(user);
@@ -34,6 +49,11 @@ twitter.UserModel.prototype.removeUser = function (userId) {
     }
 };
 
+/**
+ *
+ * @param {string}userName , {string}password
+ * @return {void}None
+ */
 twitter.UserModel.prototype.login = function (userName, password) {
     for (var user in localStorage) {
         if ((user.userName == userName) &&(user.password == password)) {
@@ -43,24 +63,42 @@ twitter.UserModel.prototype.login = function (userName, password) {
     }
 };
 
+/**
+ *
+ * @return {void}None
+ */
 twitter.UserModel.prototype.logout = function () {
     localStorage.removeItem("Session");
 };
 
+/**
+ *
+ * @param {number}userId
+ * @return {User}user
+ */
 twitter.UserModel.prototype.getUserById = function (userId) {
-    for (var user in localStorage) {
-	user = localStorage.getObject(user);
-	if (user.id == userId) {
-        return item;
+    var user;
+    for (var item in localStorage) {
+	user = localStorage.getObject(item);
+	if (item.id == userId) {
+        user = item;
         }
     }
+    return user;
 };
 
+/**
+ *
+ * @param {string}userName
+ * @return {User | boolean}user
+ */
 twitter.UserModel.prototype.getUserByUsername = function (userName) {
-    for (var user in localStorage) {
-	user = localStorage.getObject(user);
-	if (user.userName == userName) {
-        return user;
+    var user;
+    for (var item in localStorage) {
+	user = localStorage.getObject(item);
+	if (item.userName == userName) {
+        user = item;
         }
     }
+    return user;
 };
