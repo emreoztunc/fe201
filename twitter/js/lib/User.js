@@ -8,10 +8,15 @@
 
 goog.provide('twitter.User');
 goog.require('tart');
+
+/*
+ * A User.
+ *@constructor
+ */
 twitter.User = function (userName, password, eMail){
     this.id = tart.getUId();
     this.userName = userName;
-    this.password = password
+    this.password = password;
     this.eMail = eMail;
 };
 

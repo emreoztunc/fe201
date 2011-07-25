@@ -8,6 +8,11 @@
 
 goog.provide('twitter.Tweet');
 goog.require('tart');
+
+/*
+ * A tweet from the user with the userId carrying the data in "body"
+ *@constructor
+ */
 twitter.Tweet = function (user, body) {
     this.tweetId = tart.getUId();
     this.userId = user.id;

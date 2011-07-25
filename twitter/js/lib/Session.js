@@ -6,8 +6,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 goog.provide('twitter.Session');
 goog.require('tart');
+
+/*
+ * A session for the user with the "userId"
+ *@constructor
+ */
 twitter.Session = function (userId) {
     this.id = tart.getUId();
     this.userId = userId;

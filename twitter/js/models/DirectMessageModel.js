@@ -9,13 +9,28 @@
 goog.provide('twitter.DirectMessageModel');
 goog.require('twitter.DirectMessage');
 goog.require('tart');
+
+/*
+ *
+ *@constructor
+ */
 DirectMessageModel = function () {};
 
+/**
+ *
+ * @param {number} from , {number}to , {string}body
+ * @return {void} None
+ */
 twitter.DirectMessageModel.prototype.sendDirectMessage = function (from, to, body) {
     directMessage = new DirectMessage(from.id, to.id, body);
     localStorage.setObject(directMessage.id, directMessage);
 };
 
+/**
+ *
+ * @param {number} userId
+ * @return {Array.<directMessage>}
+ */
 twitter.DirectMessageModel.prototype.getInboxByUserId = function (userId) {
     var inbox = [{}];
     for (var directMessage in localStorage) {
@@ -26,6 +41,11 @@ twitter.DirectMessageModel.prototype.getInboxByUserId = function (userId) {
     return inbox;
 };
 
+/**
+ *
+ * @param {number} userId
+ * @return {Array.<directMessage>}
+ */
 twitter.DirectMessageModel.prototype.getSentByUserId = function (userId) {
     var sent = [{}];
     for (var directMessage in localStorage) {

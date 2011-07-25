@@ -8,6 +8,11 @@
 
 goog.provide('twitter.Profile');
 goog.require('tart');
+
+/*
+ * A Profile.
+ *@constructor
+ */
 twitter.Profile = function (bio, photo, location, user) {
     this.id = tart.getUId();
     this.bio = bio;

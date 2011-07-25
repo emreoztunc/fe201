@@ -8,6 +8,11 @@
 
 goog.provide('twitter.DirectMessage');
 goog.require('tart');
+
+/*
+ * A direct Message
+ *@constructor
+ */
 twitter.DirectMessage = function (fromId, toId, body){
     this.id = tart.getUId();
     this.fromId = fromId;
